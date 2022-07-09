@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase-services/config'
-import Camera, { IMAGE_TYPES } from 'react-html5-camera-photo';
+import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 
 function AuthStateListener(isLoading, setIsLoading) {
@@ -50,7 +50,6 @@ export default function Home() {
     for (var i = 0; i < byteString.length; i++) {
         ia[i] = byteString.charCodeAt(i);
     }
-    //New Code
     const blob =  new Blob([ab], {type: mimeString});
     const fd = new FormData(document.forms[0]);
     fd.append("file", blob);
@@ -74,12 +73,14 @@ export default function Home() {
           onTakePhotoAnimationDone={handleTakePhoto}
           isFullscreen={isFullscreen}
           imageType={IMAGE_TYPES.JPG}
+          idealFacingMode={FACING_MODES.ENVIRONMENT}
         />}
 
       <p>Welcome, you are logged in</p>
       <div className='flex py-10'>
         <CameraIcon className='h-15 w-14 ml-auto mr-auto' onClick={() => setOpenCamera(true)} />
       </div>
+      <button>switch camera view</button>
       <LogoutButton />
     </div>
   )
