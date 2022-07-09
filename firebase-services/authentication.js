@@ -22,7 +22,6 @@ export function signin(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // code here may execute after onAuthStateChange
-
       // Signed in 
       const user = userCredential.user;
     })
@@ -37,7 +36,6 @@ export function signout() {
 
   signOut(auth).then(() => {
     // code here may execute after onAuthStateChange
-
     // Sign-out successful.
     console.log('signed out')
   }).catch((error) => {
