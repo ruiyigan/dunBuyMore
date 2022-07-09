@@ -4,8 +4,6 @@ import { db } from './config'
 const collection_name = 'users'
 
 export async function addUser(id, email, username) {
-  console.log(id, email, username)
-
   try {
     const docRef = await addDoc(collection(db, collection_name), {
       id,

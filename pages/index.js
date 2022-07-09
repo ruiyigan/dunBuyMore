@@ -14,12 +14,9 @@ function AuthStateListener(isLoading, setIsLoading) {
     onAuthStateChanged(auth, (user) => {
 
       if (user) {
-        console.log('listened user signed in')
-        console.log(user.uid)
         setIsLoading(false)
         router.push('/')
       } else {
-        console.log('listened user signed out')
         // Kick user to login page (maybe thank you page)
         router.push('/authentication/login')
       }

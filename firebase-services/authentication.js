@@ -9,7 +9,6 @@ export function signup(email, password, username) {
       const user = userCredential.user;
 
       // add row to users collection - do not need to store password
-      console.log('user signed up with uid', user.uid)
       addUser(user.uid, email, username)
     })
     .catch((error) => {
@@ -26,7 +25,6 @@ export function signin(email, password) {
 
       // Signed in 
       const user = userCredential.user;
-      console.log(user)
     })
     .catch((error) => {
       const errorCode = error.code;
