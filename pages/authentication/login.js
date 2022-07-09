@@ -1,10 +1,13 @@
 import Link from "next/link";
+import { useRouter } from 'next/router'
 import { signin } from "../../firebase-services/authentication";
 
 export default function LoginForm() {
+  const router = useRouter()
   const onSubmit = (event) => {
     event.preventDefault()
     signin(event.target.email.value, event.target.password.value)
+    router.push('/')
   };
 
   return (

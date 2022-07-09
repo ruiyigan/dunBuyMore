@@ -1,12 +1,7 @@
-import Head from 'next/head'
-import Link from 'next/link'
-
+import { CameraIcon } from '@heroicons/react/solid'
 import LogoutButton from '../components/logout_button';
-
 import { useRouter } from 'next/router'
-
 import { useState, useEffect } from 'react'
-
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../firebase-services/config'
 
@@ -32,7 +27,6 @@ function AuthStateListener(isLoading, setIsLoading) {
   }, [])
 }
 
-
 export default function Home() {
 
   const [isLoading, setIsLoading] = useState(true)
@@ -49,8 +43,11 @@ export default function Home() {
 
   return (
     <div>
-      <p>Logged in</p>
-      <LogoutButton />
+      <p>Welcome, you are logged in</p>
+      <div className='flex py-10'>
+        <CameraIcon className='h-15 w-14 ml-auto mr-auto' onClick={() => console.log("clicked")}/>
+      </div>
+      <LogoutButton/>
     </div>
   )
 }
