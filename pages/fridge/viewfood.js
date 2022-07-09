@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import AuthStateListener from "../../components/AuthStateListener";
 import { auth } from "../../firebase-services/config"
@@ -8,6 +9,7 @@ export default function ViewFood() {
   const [isLoading, setIsLoading] = useState(true)
   const [allFood, setAllFood] = useState([])
   const [allFoodOrganised, setAllFoodOrganised] = useState({})
+  const router = useRouter()
   AuthStateListener(isLoading, setIsLoading)
   if (isLoading) {
     return (

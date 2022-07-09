@@ -4,7 +4,8 @@ export default function organisingFoodData(foodData) {
     "FISH": [],
     "MEAT": [],
     "FRUIT": [],
-    "VEGETABLE": []
+    "VEGETABLE": [],
+    "UNCATEGORISED": []
   }
 
   console.log(foodData)

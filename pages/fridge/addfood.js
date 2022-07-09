@@ -37,13 +37,20 @@ export default function AddFoodForm() {
               />
             </div>
             <div>
-              <input
+              <select
                 type='text'
                 name='category'
                 placeholder='Category of Food'
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm"
                 required
-              />
+              >
+                <option value="PERISHABLE_DRINK">Perishable Drink</option>
+                <option value="FISH">Fish</option>
+                <option value="MEAT">Meat</option>
+                <option value="FRUIT">Fruit</option>
+                <option value="VEGETABLE">Vegetable</option>
+                <option value="UNCATEGORISED">Uncategorised</option>
+              </select>
             </div>
             <div>
               <input
