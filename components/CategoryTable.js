@@ -2,8 +2,6 @@ import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 
 const CategoryTable = ({ category, categoryData, setShowTable }) => {
-  console.log(categoryData)
-
   const Item = ({ itemData }) => {
     return (
       <Tr>

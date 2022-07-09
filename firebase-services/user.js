@@ -11,7 +11,6 @@ export async function addUser(id, email, username, householdSize) {
       username,
       householdSize
     })
-    console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error('Error in addTech', e)
   }

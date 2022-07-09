@@ -37,7 +37,6 @@ export function signout() {
   signOut(auth).then(() => {
     // code here may execute after onAuthStateChange
     // Sign-out successful.
-    console.log('signed out')
   }).catch((error) => {
     // An error happened.
     console.error(error)
