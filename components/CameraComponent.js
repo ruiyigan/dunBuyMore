@@ -20,12 +20,14 @@ const CameraComponent = ({setDataUri, setOpenCamera}) => {
     const blob = new Blob([ab], { type: mimeString });
     const fd = new FormData(document.forms[0]);
     fd.append("file", blob);
-    return fd.get("file");
+    return fd
   }
-  const handleTakePhoto = (data) => {
+  const handleTakePhoto = async (data) => {
     const fileResult = dataURItoFileData(data)
-    imageFileToData(fileResult)
-    setDataUri(data);
+    const response = await imageFileToData(fileResult)
+    console.log("camera data")
+    console.log(response)
+    // setDataUri(data);
     setOpenCamera(false)
   }
 
@@ -34,7 +36,8 @@ const CameraComponent = ({setDataUri, setOpenCamera}) => {
       onTakePhotoAnimationDone={handleTakePhoto}
       imageType={IMAGE_TYPES.JPG}
       idealFacingMode={FACING_MODES.ENVIRONMENT}
-      idealResolution={{ width: 80, height: 80 }}
+      // idealResolution={{ width: 80, height: 80 }}
+      isMaxResolution={true}
     />
   )
 }

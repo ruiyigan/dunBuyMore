@@ -1,5 +1,5 @@
 import axios from 'axios'
-const dataAPIURL = ''
+const dataAPIURL = 'http://localhost:5000/scan/'
 
 // sending image file to data API and receive data
 const imageFileToData = (imageData) => {
