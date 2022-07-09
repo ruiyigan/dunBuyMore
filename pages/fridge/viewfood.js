@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import AuthStateListener from "../../components/AuthStateListener";
+import Fridge from "../../components/Fridge";
 import { auth } from "../../firebase-services/config"
 import { getAllFoodbyId } from "../../firebase-services/food"
 import organisingFoodData from "../../functions/organisingFood";
@@ -33,13 +34,12 @@ export default function ViewFood() {
       })
   }
 
-  console.log(allFoodOrganised)
   return (
     <div>
       <button onClick={() => router.push('/fridge/addfood')}>Add Food to Fridge</button>
       <br/>
       <button onClick={getAllFood}>get Food!</button>
-      {allFood.map(food => <p key={food.id}>{food.food_name}</p>)}
+      <Fridge organiseFoodData={allFoodOrganised}/>
     </div>
   )
 }

@@ -7,8 +7,6 @@ export default function organisingFoodData(foodData) {
     "VEGETABLE": [],
     "UNCATEGORISED": []
   }
-
-  console.log(foodData)
   foodData.map(food => {
     const category = food.category
     organisedFoodData[category].push(food)
