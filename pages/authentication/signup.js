@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import { signup } from '../../firebase-services/authentication';
 import { LockClosedIcon } from '@heroicons/react/solid'
+import BackButton from '../../components/BackButton';
 
 export default function SignupForm() {
   const router = useRouter()
@@ -12,10 +13,10 @@ export default function SignupForm() {
   };
 
   return (
-    <div className="min-h-full flex items-center justify-center py-24 px-4 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-center py-24 px-4 sm:px-6 lg:px-8 dark:bg-gray-600 h-screen">
       <div className="max-w-md w-full space-y-8">
-        <h1 className="mt-6 text-center text-3xl font-extrabold text-gray-900">Sign Up Form</h1>
-        <form className="mt-8 space-y-6" onSubmit={onSubmit}>
+        <h1 className="text-center text-3xl font-extrabold text-gray-900">Sign Up Form</h1>
+        <form className="space-y-6" onSubmit={onSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <input
