@@ -1,5 +1,6 @@
 import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
+import imageFileToData from '../services/dataApiServices';
 
 const CameraComponent = ({setDataUri, setOpenCamera}) => {
   const dataURItoFileData = (dataURI) => {
@@ -23,7 +24,7 @@ const CameraComponent = ({setDataUri, setOpenCamera}) => {
   }
   const handleTakePhoto = (data) => {
     const fileResult = dataURItoFileData(data)
-    console.log(fileResult)
+    imageFileToData(fileResult)
     setDataUri(data);
     setOpenCamera(false)
   }

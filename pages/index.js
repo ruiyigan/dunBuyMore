@@ -29,6 +29,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
   const [openCamera, setOpenCamera] = useState(false)
   const [dataUri, setDataUri] = useState('');
+  const router = useRouter()
 
   AuthStateListener(isLoading, setIsLoading)
   if (isLoading) {
@@ -51,6 +52,7 @@ export default function Home() {
       <div className='flex py-10'>
         <CameraIcon className='h-15 w-14 ml-auto mr-auto' onClick={() => setOpenCamera(true)} />
       </div>
+      <button onClick={() => router.push('/fridge/addfood')}>Add Food to Fridge</button>
       <LogoutButton />
     </div>
   )

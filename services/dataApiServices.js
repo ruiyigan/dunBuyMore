@@ -3,9 +3,13 @@ const dataAPIURL = ''
 
 // sending image file to data API and receive data
 const imageFileToData = (imageData) => {
-  axios.post(dataAPIURL, imageData, {
+  const request = axios.post(dataAPIURL, imageData, {
     header: {
       "Content-Type": "multipart/form-data",
     }
   })
+
+  return request.then(response => response.data);
 }
+
+export default imageFileToData
