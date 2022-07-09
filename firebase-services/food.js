@@ -25,12 +25,6 @@ export async function getAllFoodbyId(id) {
   const foodRef = collection(db, 'food')
   const q = query(foodRef, where('user_id', '==', id))
   return getDocs(q)
-  // const querySnapshot = await getDocs(q)
-  // const allFood = []
-  // querySnapshot.forEach((doc) => {
-  //   allFood.push(doc.data())
-  // })
-  // return allFood
 }
 
 // export async function getAllTech() {

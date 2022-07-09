@@ -33,7 +33,7 @@ export default function Home() {
       <div className='flex py-10'>
         <CameraIcon className='h-15 w-14 ml-auto mr-auto' onClick={() => setOpenCamera(true)} />
       </div>
-      <button onClick={() => router.push('/fridge/addfood')}>Add Food to Fridge</button>
+      <button onClick={() => router.push('/fridge/viewfood')}>View Food in Fridge</button>
       <LogoutButton />
     </div>
   )
