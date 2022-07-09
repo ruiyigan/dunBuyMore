@@ -38,13 +38,17 @@ export default function ViewFood() {
 
   return (
     <div>
-      <div className="flex items-stretch  pt-4">
-        <button className="border-2 border-black rounded px-1" onClick={() => router.push('/fridge/addfood')}>Add Food to Fridge</button>
-        <button className="border-2 border-black rounded px-1" onClick={getAllFood}>Get Food!</button>
+      <div className="pt-20">
+        <div className="flex items-stretch pt-4">
+          <button className="border-2 border-black rounded px-1" onClick={() => router.push('/fridge/addfood')}>Add Food to Fridge</button>
+          <button className="border-2 border-black rounded px-1" onClick={getAllFood}>Get Food!</button>
+        </div>
+        <Fridge organiseFoodData={allFoodOrganised} />
       </div>
-      <Fridge organiseFoodData={allFoodOrganised} />
-      <LogoutButton/>
-      <BackButton/>
+      <div>
+        <LogoutButton />
+        <BackButton />
+      </div>
     </div>
   )
 }

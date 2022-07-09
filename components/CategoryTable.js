@@ -21,7 +21,7 @@ const CategoryTable = ({ category, categoryData, setShowTable }) => {
           </Tr>
         </Thead>
         <Tbody>
-          {categoryData.map(itemData => <Item itemData={itemData} />)}
+          {categoryData.map(itemData => <Item itemData={itemData} key={itemData.id}/>)}
         </Tbody>
       </Table>
       <div className="flex justify-end">

@@ -24,7 +24,7 @@ const CameraComponent = ({setDataUri, setOpenCamera}) => {
   }
   const handleTakePhoto = async (data) => {
     const fileResult = dataURItoFileData(data)
-    const response = await imageFileToData(fileResult)
+    // const response = await imageFileToData(fileResult)
     setOpenCamera(false)
   }
 
