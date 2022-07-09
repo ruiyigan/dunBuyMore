@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import AuthStateListener from "../../components/AuthStateListener";
-import Fridge from "../../components/Fridge";
-import { auth } from "../../firebase-services/config"
-import { getAllFoodbyId } from "../../firebase-services/food"
-import organisingFoodData from "../../functions/organisingFood";
+import AuthStateListener from "../../../components/AuthStateListener";
+import Fridge from "../../../components/Fridge";
+import { auth } from "../../../firebase-services/config";
+import { getAllFoodbyId } from "../../../firebase-services/food";
+import organisingFoodData from "../../../functions/organisingFood";
 
 export default function ViewFood() {
   const [isLoading, setIsLoading] = useState(true)

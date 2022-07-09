@@ -1,6 +1,16 @@
+import { useState } from "react"
+import CategoryTable from "./CategoryTable"
+
 const FeedCard = ({ category, totalQuantity, categoryData }) => {
+  const [showTable, setShowTable] = useState(false)
+  if (showTable) {
+    return (
+      <CategoryTable categoryData={categoryData} category={category} setShowTable={setShowTable}/>
+    )
+  }
+
   return (
-    <div className="">
+    <div onClick={() => setShowTable(true)}>
       <div className="max-w-sm rounded overflow-hidden shadow-lg border-black border-2 my-2">
         {/* <div>
           <img className="rounded-t-xl h-32 w-full object-cover" src={image} />
@@ -12,6 +22,11 @@ const FeedCard = ({ category, totalQuantity, categoryData }) => {
           <p className="text-gray-700 text-base">
             Total Items: {totalQuantity}
           </p>
+          <div className="flex justify-end">
+            <button className="border-2 border-black rounded px-1" onClick={() => setShowTable(true)}>
+              Open
+            </button>
+          </div>
         </div>
       </div>
     </div>
