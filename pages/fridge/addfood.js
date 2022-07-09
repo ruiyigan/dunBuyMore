@@ -16,7 +16,8 @@ export default function AddFoodForm() {
       expiry_date: event.target.expiry_date.value
     }
     addFood(newFood)
-    // router.push('/')
+    const form = document.getElementById('addFoodForm')
+    form.reset();
   };
 
   return (
@@ -25,7 +26,7 @@ export default function AddFoodForm() {
       <LogoutButton/>
       <div className="max-w-md w-full space-y-8">
         <h1 className="text-center text-3xl font-extrabold text-gray-900">Add Food to Fridge</h1>
-        <form className="space-y-6" onSubmit={onSubmit}>
+        <form className="space-y-6" onSubmit={onSubmit} id="addFoodForm">
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
               <input
@@ -40,10 +41,10 @@ export default function AddFoodForm() {
               <select
                 type='text'
                 name='category'
-                placeholder='Category of Food'
                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:z-10 sm:text-sm"
                 required
               >
+                <option value="" selected disabled hidden>Select here</option>
                 <option value="PERISHABLE_DRINK">Perishable Drink</option>
                 <option value="FISH">Fish</option>
                 <option value="MEAT">Meat</option>

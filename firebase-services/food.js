@@ -12,6 +12,7 @@ export async function addFood(data) {
       category,
       weight,
       expiry_date,
+      status,
       user_id: auth.currentUser.uid
     })
     console.log("Document written with ID: ", docRef.id);
