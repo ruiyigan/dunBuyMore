@@ -2,14 +2,14 @@ import { auth } from './config'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { addUser } from './user';
 
-export function signup(email, password, username) {
+export function signup(email, password, username, householdSize) {
   createUserWithEmailAndPassword(auth, email, password, username)
     .then((userCredential) => {
       // Signed up - firebase uses different hashing parameters for each project
       const user = userCredential.user;
 
       // add row to users collection - do not need to store password
-      addUser(user.uid, email, username)
+      addUser(user.uid, email, username, householdSize)
     })
     .catch((error) => {
       const errorCode = error.code;

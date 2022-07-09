@@ -3,12 +3,13 @@ import { db } from './config'
 
 const collection_name = 'users'
 
-export async function addUser(id, email, username) {
+export async function addUser(id, email, username, householdSize) {
   try {
     const docRef = await addDoc(collection(db, collection_name), {
       id,
       email,
-      username
+      username,
+      householdSize
     })
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
