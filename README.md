@@ -9,7 +9,7 @@
 - Google Firebase Host
 - NextJs
 - Tailwind CSS
-- Paddle ocr
+- Paddle OCR
 
 ## Features
 
