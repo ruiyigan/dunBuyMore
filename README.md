@@ -16,6 +16,12 @@
 - Fridge Management System
 - Mobile Friendliness 
 
+### Future Features
+- Data Presentation (Your Household wastage Vs Average Singaporean Household wastage)
+  - We have stored food_Status (consumed or disposed) and household_size in our database. 
+  - Similar to our current electricity bills which shows household their energy consumption rate vs the community, we like to present this information with the data collected.
+  - This creates a sense of social competition which we believe will help to prevent food wastage in Singapore!
+
 ## Running Locally
 In the project directory, you can run:
 
