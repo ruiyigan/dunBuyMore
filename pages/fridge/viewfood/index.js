@@ -6,7 +6,6 @@ import Fridge from "../../../components/Fridge";
 import LogoutButton from "../../../components/LogoutButton";
 import { auth } from "../../../firebase-services/config";
 import { expireSoonFood, getAllFoodbyId } from "../../../firebase-services/food";
-import organisingFoodData from "../../../functions/organisingFood";
 
 export default function ViewFood() {
   const [isLoading, setIsLoading] = useState(true)
@@ -15,6 +14,22 @@ export default function ViewFood() {
   const [dataPulled, setDataPulled] = useState(false)
   const [allFoodOrganised, setAllFoodOrganised] = useState({})
   const router = useRouter()
+  const organisingFoodData = (foodData) => {
+    const organisedFoodData = {
+      "PERISHABLE_DRINK": [],
+      "FISH": [],
+      "MEAT": [],
+      "FRUIT": [],
+      "VEGETABLE": [],
+      "UNCATEGORISED": []
+    }
+    foodData.map(food => {
+      const category = food.category
+      organisedFoodData[category].push(food)
+    })
+  
+    return organisedFoodData
+  }
   AuthStateListener(isLoading, setIsLoading)
   if (isLoading) {
     return (

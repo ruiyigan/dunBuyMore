@@ -5,9 +5,6 @@ import { useState, useEffect } from 'react'
 import 'react-html5-camera-photo/build/css/index.css';
 import CameraComponent from '../components/CameraComponent';
 import AuthStateListener from '../components/AuthStateListener';
-import BackButton from '../components/BackButton';
-import fridgePic from '../images/fridge.png'
-import Image from 'next/image';
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -37,7 +34,7 @@ export default function Home() {
           <CameraIcon className='h-20 w-20 ml-auto mr-auto' onClick={() => setOpenCamera(true)} />
         </div>
         <div className='flex py-20 align-middle justify-center'>
-          <Image src={fridgePic} onClick={() => router.push('/fridge/viewfood')} width={80} height={80} />
+          <button onClick={() => router.push('/fridge/viewfood')} width={80} height={80}>Open Fridge!</button>
         </div>
       </div>
       <div>

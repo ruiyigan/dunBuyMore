@@ -1,12 +1,34 @@
 import { collection, addDoc, getDocs, query, where, deleteDoc, doc, updateDoc } from 'firebase/firestore'
-import getExpiryFromCategory from '../functions/getExpiryFromCategory'
-import getMaxDate from '../functions/getMaxDate'
 import { db, auth } from './config'
 
 const collection_name = 'food'
 
 export async function addFood(data) {
   const { food_name, category } = data
+
+  const getExpiryFromCategory = (category) => {
+    const expiryDates = {
+      "PERISHABLE_DRINK": 14,
+      "FISH": 3,
+      "MEAT": 3,
+      "FRUIT": 12,
+      "VEGETABLE": 12,
+      "UNCATEGORISED": 21
+    }
+
+    const converteDate = (input) => {
+      const pad = (s) => {
+        return (s < 10) ? '0' + s : s;
+      }
+      const d = new Date(input)
+      return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('/')
+    }
+
+    const today = new Date();
+    const expiry_date = today.setDate(today.getDate() + expiryDates[category]);
+    const readable = new Date(expiry_date)
+    return converteDate(readable);
+  }
 
   try {
     const docRef = await addDoc(collection(db, collection_name), {
@@ -60,6 +82,20 @@ export async function disposeFood(id, data) {
 
 export async function expireSoonFood(id) {
   const foodRef = collection(db, 'food')
+  const getMaxDate = () => {
+    const converteDate = (input) => {
+      const pad = (s) => {
+        return (s < 10) ? '0' + s : s;
+      }
+      const d = new Date(input)
+      return [d.getFullYear(), pad(d.getMonth() + 1), pad(d.getDate())].join('/')
+    }
+
+    const today = new Date();
+    const expiry_date = today.setDate(today.getDate() + 5);
+    const readable = new Date(expiry_date)
+    return converteDate(readable);
+  }
   const q = query(foodRef, where('expiry_date', '<', getMaxDate()))
   return getDocs(q)
 }
