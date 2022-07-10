@@ -30,5 +30,5 @@ Install Firebase tools and setup Firebase project
 ### `firebase deploy`
 
 ## Developers
-### Team The Subtle Bottle
+### Team (The Subtle Bottle)
 Gan Rui Le and Gan Rui Yi
