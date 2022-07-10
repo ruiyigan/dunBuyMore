@@ -12,7 +12,9 @@
 - Paddle OCR
 
 ## Features
-
+- Receipt to Fridge
+- Fridge Management System
+- Mobile Friendliness 
 
 ## Running Locally
 In the project directory, you can run:
