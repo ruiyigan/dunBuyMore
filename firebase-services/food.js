@@ -1,5 +1,6 @@
 import { collection, addDoc, getDocs, query, where, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import getExpiryFromCategory from '../functions/getExpiryFromCategory'
+import getMaxDate from '../functions/getMaxDate'
 import { db, auth } from './config'
 
 const collection_name = 'food'
@@ -55,4 +56,10 @@ export async function consumeFood(id, data) {
 export async function disposeFood(id, data) {
   const docRef = doc(db, collection_name, id)
   await updateDoc(docRef, data);
+}
+
+export async function expireSoonFood(id) {
+  const foodRef = collection(db, 'food')
+  const q = query(foodRef, where('expiry_date', '<', getMaxDate()))
+  return getDocs(q)
 }

@@ -1,12 +1,4 @@
-export default function getExpiryFromCategory(category) {
-  const expiryDates = {
-    "PERISHABLE_DRINK": 14,
-    "FISH": 3,
-    "MEAT": 3,
-    "FRUIT": 12,
-    "VEGETABLE": 12,
-    "UNCATEGORISED": 21
-  }
+export default function getMaxDate() {
 
   const converteDate = (input) => {
     const pad = (s) => {
@@ -17,7 +9,7 @@ export default function getExpiryFromCategory(category) {
   }
 
   const today = new Date();
-  const expiry_date = today.setDate(today.getDate() + expiryDates[category]);
+  const expiry_date = today.setDate(today.getDate() + 5);
   const readable = new Date(expiry_date)
   return converteDate(readable);
 }

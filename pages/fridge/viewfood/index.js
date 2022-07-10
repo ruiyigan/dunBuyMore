@@ -5,12 +5,13 @@ import BackButton from "../../../components/BackButton";
 import Fridge from "../../../components/Fridge";
 import LogoutButton from "../../../components/LogoutButton";
 import { auth } from "../../../firebase-services/config";
-import { getAllFoodbyId } from "../../../firebase-services/food";
+import { expireSoonFood, getAllFoodbyId } from "../../../firebase-services/food";
 import organisingFoodData from "../../../functions/organisingFood";
 
 export default function ViewFood() {
   const [isLoading, setIsLoading] = useState(true)
   const [allFood, setAllFood] = useState([])
+  const [expiringFood, setAllExpiringFood] = useState([])
   const [allFoodOrganised, setAllFoodOrganised] = useState({})
   const router = useRouter()
   AuthStateListener(isLoading, setIsLoading)
@@ -34,8 +35,19 @@ export default function ViewFood() {
         setAllFood(foodData)
         setAllFoodOrganised(organisingFoodData(foodData))
       })
+    const expiryFoodData = []
+    expireSoonFood(auth.currentUser.uid)
+      .then(data => {
+        data.forEach(doc => {
+          const docInfo = doc.data()
+          docInfo['id'] = doc.id
+          expiryFoodData.push(docInfo)
+        })
+        setAllExpiringFood(expiryFoodData)
+      })
   }
 
+  console.log(expiringFood)
   return (
     <div>
       <div className="pt-20">
@@ -43,7 +55,7 @@ export default function ViewFood() {
           <button className="border-2 border-black rounded px-1" onClick={() => router.push('/fridge/addfood')}>Add Food to Fridge</button>
           <button className="border-2 border-black rounded px-1" onClick={getAllFood}>Get Food!</button>
         </div>
-      <Fridge organiseFoodData={allFoodOrganised}/>
+        <Fridge organiseFoodData={allFoodOrganised} expiringFood={expiringFood}/>
       </div>
       <div>
         <LogoutButton />
