@@ -1,5 +1,6 @@
 import Camera, { IMAGE_TYPES, FACING_MODES } from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
+import { addFood } from '../firebase-services/food';
 import imageFileToData from '../services/dataApiServices';
 
 const CameraComponent = ({setDataUri, setOpenCamera}) => {
@@ -24,7 +25,8 @@ const CameraComponent = ({setDataUri, setOpenCamera}) => {
   }
   const handleTakePhoto = async (data) => {
     const fileResult = dataURItoFileData(data)
-    // const response = await imageFileToData(fileResult)
+    const response = await imageFileToData(fileResult)
+    response.data.map(food => addFood({ food_name: food.name, category: food.category}))
     setOpenCamera(false)
   }
 

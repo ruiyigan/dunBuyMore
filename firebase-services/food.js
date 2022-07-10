@@ -4,15 +4,16 @@ import { db, auth } from './config'
 const collection_name = 'food'
 
 export async function addFood(data) {
-  const { food_name, category, weight, expiry_date } = data
+  // const { food_name, category, weight, expiry_date } = data
+  const { food_name, category } = data
 
   try {
     const docRef = await addDoc(collection(db, collection_name), {
       food_name,
       category,
-      weight,
-      expiry_date,
-      status,
+      // weight,
+      // expiry_date,
+      // status,
       user_id: auth.currentUser.uid
     })
   } catch (e) {
