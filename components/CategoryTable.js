@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
-import { deleteFood } from '../firebase-services/food';
+import { consumeFood, deleteFood, disposeFood } from '../firebase-services/food';
 
 const CategoryTable = ({ category, categoryData, setShowTable }) => {
   
@@ -10,6 +10,31 @@ const CategoryTable = ({ category, categoryData, setShowTable }) => {
     const handleDelete = (id) => {
       deleteFood(id)
     }
+
+    const handleConsume = (id) => {
+      const newItemData = {
+        "food_name": itemData.food_name,
+        "category": itemData.category,
+        "weight": itemData.weight,
+        "expiry_date": itemData.expiry_date,
+        "status": "consumed",
+        "user_id": itemData.user_id
+      }
+      consumeFood(id, newItemData)
+    }
+
+    const handleDispose = (id) => {
+      const newItemData = {
+        "food_name": itemData.food_name,
+        "category": itemData.category,
+        "weight": itemData.weight,
+        "expiry_date": itemData.expiry_date,
+        "status": "disposed",
+        "user_id": itemData.user_id
+      }
+      disposeFood(id, newItemData)
+    }
+
     if (deleted) {
       return null
     }
@@ -17,7 +42,9 @@ const CategoryTable = ({ category, categoryData, setShowTable }) => {
       <Tr>
         <Td>{itemData.food_name}</Td>
         <Td>
-          <button onClick={() => {handleDelete(itemData.id); setDeleted(true)}}>Delete</button>
+          <button className='text-teal-500' onClick={() => {handleDelete(itemData.id); setDeleted(true)}}>Delete</button>
+          <button className='text-teal-500' onClick={() => {handleConsume(itemData.id);}}>Consumed</button>
+          <button className='text-teal-500' onClick={() => {handleDispose(itemData.id);}}>Disposed</button>
         </Td>
       </Tr>
     )

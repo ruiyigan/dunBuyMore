@@ -1,14 +1,13 @@
 import { useState } from "react"
 import CategoryTable from "./CategoryTable"
 
-const FeedCard = ({ category, totalQuantity, categoryData }) => {
+const FeedCard = ({ category, totalQuantity, categoryData}) => {
   const [showTable, setShowTable] = useState(false)
   if (showTable) {
     return (
-      <CategoryTable categoryData={categoryData} category={category} setShowTable={setShowTable}/>
+      <CategoryTable categoryData={categoryData} category={category} setShowTable={setShowTable} />
     )
   }
-
   return (
     <div onClick={() => setShowTable(true)}>
       <div className="max-w-sm rounded overflow-hidden shadow-lg border-black border-2 my-2">

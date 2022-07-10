@@ -1,4 +1,4 @@
-import { collection, addDoc, getDocs, query, where, deleteDoc, doc } from 'firebase/firestore'
+import { collection, addDoc, getDocs, query, where, deleteDoc, doc, updateDoc } from 'firebase/firestore'
 import { db, auth } from './config'
 
 const collection_name = 'food'
@@ -29,4 +29,16 @@ export async function getAllFoodbyId(id) {
 
 export async function deleteFood(id) {
   await deleteDoc(doc(db, collection_name, id));
+}
+
+// updates status of food item to consumed
+export async function consumeFood(id, data) {
+  const docRef = doc(db, collection_name, id)
+  await updateDoc(docRef, data);
+}
+
+// updates status of food item to disposed
+export async function disposeFood(id, data) {
+  const docRef = doc(db, collection_name, id)
+  await updateDoc(docRef, data);
 }
