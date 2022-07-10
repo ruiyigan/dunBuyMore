@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import { PlusCircleIcon } from '@heroicons/react/solid'
-import { addFood } from '../../firebase-services/food';
+import { addFoodManually } from '../../firebase-services/food';
 import BackButton from '../../components/BackButton';
 import LogoutButton from '../../components/LogoutButton';
 
@@ -15,7 +15,7 @@ export default function AddFoodForm() {
       weight: event.target.weight.value,
       expiry_date: event.target.expiry_date.value
     }
-    addFood(newFood)
+    addFoodManually(newFood)
     const form = document.getElementById('addFoodForm')
     form.reset();
   };

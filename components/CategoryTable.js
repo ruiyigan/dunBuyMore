@@ -42,9 +42,9 @@ const CategoryTable = ({ category, categoryData, setShowTable }) => {
       <Tr>
         <Td>{itemData.food_name}</Td>
         <Td>
-          <button className='text-teal-500' onClick={() => {handleDelete(itemData.id); setDeleted(true)}}>Delete</button>
-          <button className='text-teal-500' onClick={() => {handleConsume(itemData.id);}}>Consumed</button>
-          <button className='text-teal-500' onClick={() => {handleDispose(itemData.id);}}>Disposed</button>
+          <button className="pr-1 text-teal-600 dark:text-teal-500 hover:underline" onClick={() => {handleDelete(itemData.id); setDeleted(true)}}>Delete</button>
+          <button className=" text-teal-600 dark:text-teal-500 hover:underline" onClick={() => {handleConsume(itemData.id);}}>Consumed</button>
+          <button className=" text-teal-600 dark:text-teal-500 hover:underline" onClick={() => {handleDispose(itemData.id);}}>Disposed</button>
         </Td>
       </Tr>
     )
