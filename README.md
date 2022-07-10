@@ -1,6 +1,6 @@
 # Dun Buy More (Life Hack 2022) 
 ## Environment Question 1
-- Visit our live prototype at https://lifehack22-d68e6.web.app/authentication/login
+- Visit our live prototype at https://lifehack22-d68e6.web.app/
 - Visit our Demo at https://www.youtube.com/watch?v=OItbglLGelI
 
 ## Tech Stack
